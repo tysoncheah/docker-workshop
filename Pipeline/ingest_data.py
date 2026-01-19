@@ -48,7 +48,8 @@ parse_dates = [
 @click.option('--year', type=int, default=2021, help='Year')
 @click.option('--month', type=int, default=1, help='Month')
 @click.option('--chunksize', type=int, default=100000, help='Chunk size')
-def run(pg_user, pg_pass, pg_host, pg_port, pg_db, year, month, chunksize):
+@click.option('--target_table', type=str, default='yellow_taxi_data', help='Target table name')
+def run(pg_user, pg_pass, pg_host, pg_port, pg_db, year, month, chunksize, target_table):
     
     prefix = 'https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/'
     url = f'{prefix}/yellow_tripdata_{year}-{month:02}.csv.gz'
@@ -90,3 +91,4 @@ def run(pg_user, pg_pass, pg_host, pg_port, pg_db, year, month, chunksize):
 
 if __name__ == '__main__':
     run()
+
