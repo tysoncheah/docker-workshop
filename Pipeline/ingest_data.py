@@ -45,19 +45,16 @@ parse_dates = [
 @click.option('--pg_host', default='localhost', help='PostgreSQL host')
 @click.option('--pg_port', type=int, default=5432, help='PostgreSQL port')
 @click.option('--pg_db', default='ny_taxi', help='PostgreSQL database')
-@click.option('--year', type=int, default=2021, help='Year')
-@click.option('--month', type=int, default=1, help='Month')
+@click.option('--year', type=int, default=2025, help='Year')
+@click.option('--month', type=int, default=11, help='Month')
 @click.option('--chunksize', type=int, default=100000, help='Chunk size')
 @click.option('--target_table', type=str, default='yellow_taxi_data', help='Target table name')
 def run(pg_user, pg_pass, pg_host, pg_port, pg_db, year, month, chunksize, target_table):
     
-    prefix = 'https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/'
-    url = f'{prefix}/yellow_tripdata_{year}-{month:02}.csv.gz'
+    url = https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2025-11.parquet
     engine = create_engine(f'postgresql://{pg_user}:{pg_pass}@{pg_host}:{pg_port}/{pg_db}')
 
-    target_table = "yellow_taxi_data"
-
-    df_iter = pd.read_csv(
+    df_iter = pd.read_parquet(
         url,
         dtype=dtype,
         parse_dates=parse_dates,
