@@ -18,7 +18,7 @@ services:
     volumes:
       - "pgadmin_data:/var/lib/pgadmin"
     ports:
-      - "8085:80"
+      - "8086:80"
 
 
 
